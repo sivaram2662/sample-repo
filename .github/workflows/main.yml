@@ -30,18 +30,18 @@ jobs:
         run: echo "Self-hosted runner is working"
 
   test:
-  runs-on: self-hosted
-  needs: deploy
+    runs-on: self-hosted
+    needs: deploy
 
-  steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-    - name: Build Docker Image
-      run: docker build -t my-app-image:2 .
+      - name: Build Docker Image
+        run: docker build -t my-app-image:2 .
 
-    - name: Check Docker Images
-      run: docker images -a
+      - name: Check Docker Images
+        run: docker images -a
