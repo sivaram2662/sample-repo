@@ -53,13 +53,17 @@ jobs:
       - name: Run Test Container
         run: |
           docker run -d \
-            --name my-app-test12 \
-            -p 8083:80 \
+            --name my-app-test124 \
+            -p 8084:80 \
             my-app-image:3
 
       - name: Verify Docker Access
         run: |
           docker ps 
+
+      - name: Verify AWS Identity
+        run: |
+          aws sts get-caller-identity
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
