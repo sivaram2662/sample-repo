@@ -53,8 +53,8 @@ jobs:
       - name: Run Test Container
         run: |
           docker run -d \
-            --name my-app-test \
-            -p 8081:80 \
+            --name my-app-test123 \
+            -p 8082:80 \
             my-app-image:3
 
       - name: Verify Docker Access
