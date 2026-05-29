@@ -49,8 +49,8 @@ jobs:
       - name: Run Test Container
         run: |
           docker run -d \
-            --name my-app-test-4567\
-            -p 8088:80 \
+            --name my-app-test-4566\
+            -p 8089:80 \
             my-app-image:3
 
       - name: Verify Running Containers
@@ -73,16 +73,8 @@ jobs:
 
       - name: Tag Docker Image
         run: |
-          docker tag my-app-image:3 $ECR_REGISTRY/$ECR_REPOSITORY:latest
-          docker tag my-app-image:3 $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }}
+          docker tag my-app-image:3 $ECR_REGISTRY/$ECR_REPOSITORY:3
 
       - name: Push Docker Image to ECR
         run: |
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }}
-
-      - name: Show Pushed Image
-        run: |
-          echo "Pushed:"
-          echo "$ECR_REGISTRY/$ECR_REPOSITORY:latest"
-          echo "$ECR_REGISTRY/$ECR_REPOSITORY:${{ github.sha }}"
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:3
